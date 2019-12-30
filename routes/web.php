@@ -17,22 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('new', function () {
-    return view('memories.create');
-});
-Route::get('show', function () {
-    return view('memories.show');
-});
+Route::get('/home', 'MemoriesController@index')->name('memory.index');
 
 
+Route::get('/m', 'MemoriesController@index')->name('memory.index');
 Route::get('/m/create', 'MemoriesController@create');
 Route::post('/m', 'MemoriesController@store');
 Route::get('/m/{memory}', 'MemoriesController@show');
 Route::get('/m/{memory}/edit', 'MemoriesController@edit')->name('memory.edit');
 Route::patch('/m/{memory}', 'MemoriesController@update')->name('memory.update');
+Route::delete('/m/{memory}', 'MemoriesController@destroy')->name('memory.destroy');
 
 
-Route::get('/profile/{user}', 'ProfilesController@show')->name('profile.show');
+//Route::get('/profile/{user}', 'ProfilesController@index')->name('memory.showMemories');
 
