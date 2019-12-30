@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="login-header">{{ __('عنوان خاطره ') }}</div>
+            <div class="login-header">{{$memory->title}}</div>
             <form method="POST" action="{{ route('login') }}">    
                 <div class="form-group row justify-content-center">
                     <div class="col-md-10">
-                        <!--متن خاطره -->
+                        {{$memory->description}}
                     </div>
                 </div>
                 
