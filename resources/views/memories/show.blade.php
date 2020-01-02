@@ -16,9 +16,7 @@
         </div> 
     </div>
     <div class="row justify-content-center">
-            <button type="submit" class="btn btn-del center-block" >
-                {{ __(' بازگشت ') }}
-            </button>
+            <a type="submit" href="/m" class="btn btn-del center-block"> {{ __(' بازگشت ') }} </a>
         </div>
 </div>
 @endsection

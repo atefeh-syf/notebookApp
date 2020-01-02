@@ -15,7 +15,7 @@
                             
 
                             <div class="col-md-6">
-                                <input id="email" type="email"   placeholder="ایمیل" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="username" type="text"   placeholder="نام کاربری" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -59,9 +59,7 @@
                         <div class="form-group row mb-0 justify-content-center">
                             
                                 
-                                <button type="submit" class="btn btn-primary center-block">
-                                    {{ __('ثبت نام') }}
-                                </button>
+                                <a type="submit" href="/register" class="btn btn-primary  center-block"> {{ __(' ثبت نام ') }} </a>
                                 
                         </div>
                     </form>
