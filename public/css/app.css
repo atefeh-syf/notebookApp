@@ -54,6 +54,7 @@
 }
 
 html {
+  direction: rtl;
   font-family: ShabnamFont;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -74,6 +75,7 @@ section {
 }
 
 body {
+  direction: rtl;
   margin: 0;
   font-family: 'ShabnamFont';
   font-size: 0.9rem;
@@ -750,6 +752,7 @@ pre code {
 .col-3,
 .col-2,
 .col-1 {
+  direction: rtl;
   position: relative;
   width: 100%;
   padding-right: 15px;

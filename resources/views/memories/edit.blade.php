@@ -32,10 +32,11 @@
             </div> 
         </div>
         <div class="row justify-content-center">
-                <a type="submit" href="/m" class="btn btn-del center-block"> {{ __(' بازگشت ') }} </a>
+                
                 <button type="submit" class="btn btn-edit center-block">
                     {{ __(' ثبت ') }}
                 </button>
+                <a type="submit" href="/m" class="btn btn-del center-block"> {{ __(' بازگشت ') }} </a>
             </div>
     </form>
 </div>

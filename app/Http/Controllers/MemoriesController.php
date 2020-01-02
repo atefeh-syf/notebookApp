@@ -41,8 +41,6 @@ class MemoriesController extends Controller
         ]);
         auth()->user()->memories()->create($data);
         return redirect('/m');
-
-        //return redirect('/profile/' . auth()->user()->id);
     }
 
     public function show(Memory $memory)
@@ -58,6 +56,7 @@ class MemoriesController extends Controller
         if ($memory->user_id != auth()->user()->id) {
             $this->authorize('update',  $memory->user_id);
         }
+        
         return view('memories.edit', compact('memory'));
     }
 

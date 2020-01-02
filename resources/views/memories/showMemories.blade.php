@@ -17,12 +17,14 @@
         <div class="col-5 pt-4">
                 <div class="card">
                     <div class="row justify-content-center ">
-                        <div class="col-md-6"><div class="card-header">
-                            
-                            {{ $memory->jalali}}</div></div>
+                        
                         <div class="col-md-6"><div class="card-header">{{ $memory->title }}</div></div>
+                        <div class="col-md-6"><div class="card-header">{{ $memory->jalali}}</div></div>
                     </div>
                         <div class="row justify-content-center">
+                            <a type="submit" href="/m/{{$memory->id}}" class="btn btn-reg center-block"> {{ __(' مشاهده ') }} </a>
+                            <a type="submit" href="/m/{{$memory->id}}/edit" class="btn btn-edit center-block">{{ __(' ویرایش ') }}</a>
+                            
                             <form action="/m/{{$memory->id}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -30,8 +32,6 @@
                                     {{ __(' حذف ') }}
                                 </button>
                             </form>
-                            <a type="submit" href="/m/{{$memory->id}}/edit" class="btn btn-edit center-block">{{ __(' ویرایش ') }}</a>
-                            <a type="submit" href="/m/{{$memory->id}}" class="btn btn-reg center-block"> {{ __(' مشاهده ') }} </a>
                         </div>
                 </div>
          </div>

@@ -48,7 +48,7 @@
                                         {{ __('مرا بخاطر بسپار') }}
                                     </label>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" style="float:left !important;">
                                 <button type="submit" class="btn btn-primary login-btn">
                                     {{ __('ورود') }}
                                 </button>
