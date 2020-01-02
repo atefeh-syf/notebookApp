@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -16,7 +17,9 @@
         <div class="col-5 pt-4">
                 <div class="card">
                     <div class="row justify-content-center ">
-                        <div class="col-md-6"><div class="card-header">{{ $memory->created_at}}</div></div>
+                        <div class="col-md-6"><div class="card-header">
+                            
+                            {{ $memory->jalali}}</div></div>
                         <div class="col-md-6"><div class="card-header">{{ $memory->title }}</div></div>
                     </div>
                         <div class="row justify-content-center">

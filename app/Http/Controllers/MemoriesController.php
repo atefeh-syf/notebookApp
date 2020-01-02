@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Memory;
 use \App\User;
+use \Morilog\Jalali\Jalalian;
 use PhpParser\Builder\Use_;
 
 class MemoriesController extends Controller
@@ -18,16 +19,13 @@ class MemoriesController extends Controller
     public function index()
     {
         $memories = Memory::all();
-        //$memories = auth()->user()->memories;
-        //dd(Memory::find($memories['created_at']));
-
-        //dd($date = \Morilog\Jalali\Jalalian::forge('last sunday')->format('date'));
-        return view('memories.showMemories')->with(('memories'),  auth()->user()->memories);
-
-        // $user = auth()->user()->memories()->index();
-        // return view('memories.showMemories', compact('user'));
-        // $user = User::findOrFail($user);
-        // return view('memory.showMemories', compact('user'));
+        $memories = auth()->user()->memories;
+        foreach ($memories  as $key=>$memory) {
+            $date=$memory->created_at;
+            $date = Jalalian::forge($date)->format('Y-m-d');
+            $memories[$key]['jalali']=$date;
+        }
+        return view('memories.showMemories')->with(('memories'), $memories);
     }
 
     public function create()
@@ -57,7 +55,7 @@ class MemoriesController extends Controller
 
     public function edit(Memory $memory)
     {
-        if($memory->user_id != auth()->user()->id){ 
+        if ($memory->user_id != auth()->user()->id) {
             $this->authorize('update',  $memory->user_id);
         }
         return view('memories.edit', compact('memory'));
@@ -88,8 +86,8 @@ class MemoriesController extends Controller
         $memoryInfo = Memory::findOrFail($memory->id);
         $memoryInfo->delete($memoryInfo->id);
         return redirect('/m');
-        
-        
+
+
         //dd(auth()->user()->memories()->$memoryInfo);
         //auth()->user()->memories()->$memoryInfo->delete($memoryInfo->id);
     }
