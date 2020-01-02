@@ -31,6 +31,7 @@ class MemoryPocily
     public function view(User $user, Memory $memory)
     {
         //
+        return $user->id == $memory->user_id;
     }
 
     /**
@@ -67,6 +68,7 @@ class MemoryPocily
     public function delete(User $user, Memory $memory)
     {
         //
+        return $user->id == $memory->user_id;
     }
 
     /**

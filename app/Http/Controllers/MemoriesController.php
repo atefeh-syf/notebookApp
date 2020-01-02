@@ -18,6 +18,10 @@ class MemoriesController extends Controller
     public function index()
     {
         $memories = Memory::all();
+        //$memories = auth()->user()->memories;
+        //dd(Memory::find($memories['created_at']));
+
+        //dd($date = \Morilog\Jalali\Jalalian::forge('last sunday')->format('date'));
         return view('memories.showMemories')->with(('memories'),  auth()->user()->memories);
 
         // $user = auth()->user()->memories()->index();
@@ -45,22 +49,26 @@ class MemoriesController extends Controller
 
     public function show(Memory $memory)
     {
+        if ($memory->user_id != auth()->user()->id) {
+            $this->authorize('show',  $memory->user_id);
+        }
         return view('memories.show', compact('memory'));
-        
     }
 
     public function edit(Memory $memory)
     {
-        //$this->authorize('update', $memory->user_id->user());
+        if($memory->user_id != auth()->user()->id){ 
+            $this->authorize('update',  $memory->user_id);
+        }
         return view('memories.edit', compact('memory'));
     }
 
     public function update(Memory $memory)
     {
 
-        $user = User::findOrFail($memory->user_id);
-        //$this->authorize('update', $memory->user_id == $user_>id );
-
+        if ($memory->user_id != auth()->user()->id) {
+            $this->authorize('update',  $memory->user_id);
+        }
         $data = request()->validate(
             [
                 'title' => 'required',
@@ -74,10 +82,15 @@ class MemoriesController extends Controller
 
     public function destroy(Memory $memory)
     {
+        if ($memory->user_id != auth()->user()->id) {
+            $this->authorize('destroy',  $memory->user_id);
+        }
         $memoryInfo = Memory::findOrFail($memory->id);
+        $memoryInfo->delete($memoryInfo->id);
+        return redirect('/m');
+        
+        
         //dd(auth()->user()->memories()->$memoryInfo);
         //auth()->user()->memories()->$memoryInfo->delete($memoryInfo->id);
-        $memoryInfo->delete($memoryInfo->id);
-        return redirect('/m');  
     }
 }
